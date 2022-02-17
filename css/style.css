@@ -3,3 +3,26 @@
     font-size: 50px;
     font-weight: 700;
 }
+
+.parsen {
+    text-align: center;
+    text-align: center;
+    font-size: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.save {
+    display: flex;
+}
+
+.save-btn {
+    color: rgb(246, 252, 252);
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgb(15, 126, 230);
+}
+
+.save-input {
+    background-color: rgb(215, 221, 219);
+}
