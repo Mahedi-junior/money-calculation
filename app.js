@@ -38,6 +38,10 @@ document.getElementById("calculate").addEventListener("click", function() {
 function getSaving(percent) {
     let inputDiscount = document.getElementById(percent);
     let discount = parseFloat(inputDiscount.value);
+    if (discount < 0 || isNaN(discount)) {
+        return alert("please input a valid discount");
+    }
+
     return discount;
 }
 
@@ -47,6 +51,9 @@ document.getElementById("save-btn").addEventListener("click", function() {
     );
     let getDiscount = getSaving("save-input");
     let saveAmount = (getDiscount * currentBalance) / 100;
+    if (saveAmount > currentBalance) {
+        return alert("Saving Amount cann't more than Current Balance");
+    }
     let remainingBalance = currentBalance - saveAmount;
 
     document.getElementById("saving").innerText = parseFloat(saveAmount);
