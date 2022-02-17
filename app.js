@@ -5,7 +5,8 @@ function getValue(inputValue) {
     let inputAmount = parseFloat(amount.value);
 
     // Error handling for Negative & String value
-    if (isNaN(inputAmount) || inputAmount < 0) {
+
+    if (isNaN(inputAmount)) {
         return alert("Please input valid amount");
     }
 
@@ -18,6 +19,9 @@ document.getElementById("calculate").addEventListener("click", function() {
     let foodAmount = getValue("food-cost");
     let rentAmount = getValue("rent-cost");
     let clothAmount = getValue("cloth-cost");
+    if (foodAmount < 0 || rentAmount < 0 || clothAmount < 0 || incomeInput < 0) {
+        return alert("Input positive value");
+    }
 
     const totalExpense = foodAmount + rentAmount + clothAmount;
     const currentBalance = incomeInput - totalExpense;
@@ -28,8 +32,10 @@ document.getElementById("calculate").addEventListener("click", function() {
         return alert("Expense cann't more than Income");
     }
     // Show Expanse & Current Balance
+    const balance = document.getElementById("final-balance").innerText;
 
     document.getElementById("total-expense").innerText = totalExpense;
+
     document.getElementById("final-balance").innerText = currentBalance;
 });
 
@@ -55,7 +61,7 @@ document.getElementById("save-btn").addEventListener("click", function() {
         return alert("Saving Amount cann't more than Current Balance");
     }
     let remainingBalance = currentBalance - saveAmount;
-
+    // Show Saving & Remaining Balance
     document.getElementById("saving").innerText = parseFloat(saveAmount);
     document.getElementById("remaining-balance").innerText =
         parseFloat(remainingBalance);
