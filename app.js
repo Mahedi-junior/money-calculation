@@ -33,22 +33,23 @@ document.getElementById("calculate").addEventListener("click", function() {
     document.getElementById("final-balance").innerText = currentBalance;
 });
 
-// Calling the function
-// document.getElementById("calculate").addEventListener("click", function () {});
-//saving calculation
+// Saving calculation
 
-// document.getElementById("save-btn").addEventListener("click", function () {
-// const currentbalance = parseFloat(
-// document.getElementById("final-balance").innerText
-// );
-// //saving balance
-// const saveInput = document.getElementById("save-input").value;
-// const saving = currentbalance * (saveInput / 100);
-// //saving amount
-// savingText = document.getElementById("saving");
-// savingText.innerText = parseInt(saving);
-// const remainigbalance = currentbalance - saving;
-// console.log(remainigbalance);
-// const remainigText = document.getElementById("remaining-blance");
-// remainigText.innerText = parseFloat(remainigbalance);
-// });
+function getSaving(percent) {
+    let inputDiscount = document.getElementById(percent);
+    let discount = parseFloat(inputDiscount.value);
+    return discount;
+}
+
+document.getElementById("save-btn").addEventListener("click", function() {
+    let currentBalance = parseFloat(
+        document.getElementById("final-balance").innerText
+    );
+    let getDiscount = getSaving("save-input");
+    let saveAmount = (getDiscount * currentBalance) / 100;
+    let remainingBalance = currentBalance - saveAmount;
+
+    document.getElementById("saving").innerText = parseFloat(saveAmount);
+    document.getElementById("remaining-balance").innerText =
+        parseFloat(remainingBalance);
+});
